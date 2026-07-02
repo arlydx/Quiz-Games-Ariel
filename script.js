@@ -1,13 +1,13 @@
-import banqueQuestions from './donnees-questions';
+import banqueQuestions from './donnees-questions.js';
 
-let indecquestion = 0;
+let indexQuestion = 0;
 let score = 0;
-let tempsRestants = 15;
+let tempsRestant = 15;
 let intervalChrono = null;
 
 
 const ecranAccueil = document.getElementById('ecran-accueil');
-const ecranjeu = document.getElementById('ecran-jeu');
+const ecranJeu = document.getElementById('ecran-jeu');
 const ecranFin = document.getElementById('ecran-fin');
 
 const btnCommencer = document.getElementById('btn-commencer');
@@ -28,23 +28,23 @@ function demarrerjeu() {
     indexQuestion = 0;
     score = 0;
     ecranAccueil.style.display = 'none';
-    ecranFin.style.display = 'block';
+    ecranJeu.style.display = 'block';
     afficherQuestion();
 }
 
 function afficherQuestion() {
     const question = banqueQuestions[indexQuestion];
 
-    compteurQuestion.textConstent = 'Question ${indexQuestion + 1} /${banqueQuestions.length}';
-    epoqueE1.textContent = question.epoque;
-    texteQuestionE1.textContent = question.texte;
-    scoreLiveEl.textContent = 'Score : ${score}';
+    compteurQuestion.textContent = `Question ${indexQuestion + 1} /${banqueQuestions.length}`;
+    epoqueEl.textContent = question.epoque;
+    texteQuestionEl.textContent = question.texte;
+    scoreLiveEl.textContent = `Score : ${score}`;
 
     zoneReponses.innerHTML = '';
 
-    banqueQuestions.choix.forEach(choixTexte => {
+    question.choix.forEach(choixTexte => {
         const bouton = document.createElement('button')
-        bouton.classicList.add('option');
+        bouton.classList.add('option');
         bouton.textContent = choixTexte;
         bouton.addEventListener('click', () => verifierReponse (choixTexte, question, bouton));
         zoneReponses.appendChild(bouton);
@@ -54,16 +54,16 @@ function afficherQuestion() {
 }
 
 function demarrerChrono() {
-    tempsRestants = 30;
-    chronoE1.textContent = '${tempsRestant}s';
+    tempsRestant = 10;
+    chronoEl.textContent = `${tempsRestant}s`;
 
     clearInterval(intervalChrono);
 
     intervalChrono = setInterval(() => {
-        tempsRestants--;
-        chronoe1.textContent = '${tempsRestantes}s';
+        tempsRestant--;
+        chronoEl.textContent = `${tempsRestant}s`;
 
-        if (tempsRestants <= 0){
+        if (tempsRestant <= 0){
             clearInterval(intervalChrono);
             verifierReponse(null, banqueQuestions[indexQuestion], null);
         }
@@ -76,19 +76,19 @@ function verifierReponse(reponseChoisie, question, boutonClique){
 
     const tousLesBoutons = zoneReponses.querySelectorAll('.option');
     tousLesBoutons.forEach(bouton =>{
-        bouton.Disabled = true;
+        bouton.disabled = true;
     if(bouton.textContent == question.bonneReponse){
         bouton.classList.add('correct');
     }    
     });
 
-    if (reponseChoisie === question.bonnereponse){
+    if (reponseChoisie === question.bonneReponse){
         score++;
     } else if (boutonClique) {
-        boutonClique.classList.add('Wrong');
+        boutonClique.classList.add('wrong');
     }
 
-    scoreLiveEl.textContent = 'Score : ${score}';
+    scoreLiveEl.textContent = `Score : ${score}`;
 
     setTimeout(question_suivante, 1200);
 }
@@ -96,7 +96,7 @@ function verifierReponse(reponseChoisie, question, boutonClique){
 function question_suivante() {
 indexQuestion++;
 
-if (indexQuestion < banqueQuestion.length) {
+if (indexQuestion < banqueQuestions.length) {
     afficherQuestion();
 } else {
     finDujeu();
@@ -105,13 +105,13 @@ if (indexQuestion < banqueQuestion.length) {
 
 
 function finDujeu() {
-    ecranjeu.style.display = 'none';
+    ecranJeu.style.display = 'none';
     ecranFin.style.display = 'block';
 
     const scoreFinalEl = document.getElementById('score-final');
     const meilleurscoreEl = document.getElementById('meilleur-score');
 
-    scoreFinalEl.textContent ='Score ; ${score} / ${banqueQuestion.length}';
+    scoreFinalEl.textContent =`Score ; ${score} / ${banqueQuestions.length}`;
     let meilleurScore = localStorage.getItem('meilleureScoreHistoire');
     meilleurScore = meilleurScore ? parseInt(meilleurScore) : 0;
 
@@ -120,5 +120,5 @@ function finDujeu() {
         localStorage.setItem('meilleurScore', meilleurScore);
     }
 
-    meilleurScoreE1.textContent = 'Meilleur score : ${meilleurScore} / ${banqueQuestions.length}';
+    meilleurscoreEl.textContent = `Meilleur score : ${meilleurScore} / ${banqueQuestions.length}`;
 }
