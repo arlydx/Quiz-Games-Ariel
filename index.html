@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<htnl lang="fr">
+    <head>
+        <meta charset="UFT-8">
+        <meta name="viewport" content="width=device-width, initial-scal=1.0">
+        <title>chronos - Quiz d'histoire</title>
+        <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <div id="ecran-accueil" class="ecran">
+                <h1>Chronos</h1>
+                <p>Teste tes connaissances en histoire — 50 questions t'attendent.</p>
+                <button id="btn-commencer">commencer</button>
+                </div>
+
+                <div id="ecran-jeu" class="ecran" style="display: none;">
+                    <div class="barre-info">
+                        <span id="compteur-question">Question 1 / 50</span>
+                        <span id="chrono">30s</span>
+                        </div>
+                        <p id="epoque-question" class="epoque"></p>
+                        <h2 id="texte-question">La Question s'affichera ici</h2>
+                        <div id="zone-reponses"></div>
+                        <p id="score-live">Score : 0</p>
+                        </div>
+
+                        <div id="ecran-fin" class="ecran" style="display: none;">
+                            <h2>Resultat</h2>
+                            <p id="score-final">Score : 0 / 50</p>
+                            <p id="meilleur-score">Meilleur score : 0 / 50</p>
+                            <button id="btn-rejouer">Rejouer</button>
+                            </div>
+
+                            <script type="module" src="entities/Questions.js"></script>
+                            <script type="module" src="script.js"></script>
+
+                            </body>
+                            </html>
