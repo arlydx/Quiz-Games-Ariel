@@ -2,7 +2,7 @@ import banqueQuestions from './donnees-questions.js';
 
 let indexQuestion = 0;
 let score = 0;
-let tempsRestant = 15;
+let tempsRestant = 10;
 let intervalChrono = null;
 
 
