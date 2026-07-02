@@ -214,3 +214,9 @@ button:hover {
   background-color: rgba(212,175,106,0.12);
   transition: transform 0.1s ease;
 }
+
+.option:disabled {
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: default;
+}
