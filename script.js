@@ -36,6 +36,8 @@ function afficherQuestion() {
     const question = banqueQuestions[indexQuestion];
 
     compteurQuestion.textContent = `Question ${indexQuestion + 1} /${banqueQuestions.length}`;
+    const pourcentage = ((indexQuestion + 1) / banqueQuestions.length) * 100;
+document.getElementById('progression-fill').style.width = `${pourcentage}%`;
     epoqueEl.textContent = question.epoque;
     texteQuestionEl.textContent = question.texte;
     scoreLiveEl.textContent = `Score : ${score}`;
