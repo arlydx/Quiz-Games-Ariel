@@ -2,7 +2,7 @@ import banqueQuestions from './donnees-questions.js';
 
 let indexQuestion = 0;
 let score = 0;
-let tempsRestant = 10;
+let tempsRestant = 30;
 let intervalChrono = null;
 
 
@@ -56,7 +56,7 @@ document.getElementById('progression-fill').style.width = `${pourcentage}%`;
 }
 
 function demarrerChrono() {
-    tempsRestant = 10;
+    tempsRestant = 30;
     chronoEl.textContent = `${tempsRestant}s`;
 
     clearInterval(intervalChrono);
