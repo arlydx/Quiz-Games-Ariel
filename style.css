@@ -220,3 +220,23 @@ button:hover {
   box-shadow: none !important;
   cursor: default;
 }
+
+.titre-accueil {
+  font-size: 64px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+  color: #e8c988;
+}
+
+.sous-titre-accueil {
+  font-size: 18px;
+  color: #8a8d99;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .titre-accueil {
+    font-size: 42px;
+  }
+}
