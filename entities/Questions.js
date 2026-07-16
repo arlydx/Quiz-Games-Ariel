@@ -1,4 +1,4 @@
-class Question {
+export class Question {
   constructor(texte, choix, bonneReponse, epoque) {
     this.texte = texte;
     this.choix = choix;
